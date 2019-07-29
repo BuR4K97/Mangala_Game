@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace Mangala_Game.Models
 {
-    public class MangalaGame
+    public class Turn
     {
 
-        public const int PLAYER_NUMBER = 2;
+
 
     }
-
 }
