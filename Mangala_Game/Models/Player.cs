@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mangala_Game.Exceptions.GameExceptions;
 
 namespace Mangala_Game.Models
 {
@@ -26,13 +27,13 @@ namespace Mangala_Game.Models
 
         public bool ExecuteUnitGround(PartialGameGround execute_ground, int execute_index)
         {
-            if (!IsAccessible(execute_ground)) throw new Exceptions.InvalidPlayerAccessException();
+            if (!IsAccessible(execute_ground)) throw new InvalidPlayerAccessException();
             return true;
         }
 
         public bool RetrieveIntoUnitStorage(UnitStorage unit_storage, Unit retrieve_unit)
         {
-            if (!IsAccessible(unit_storage)) throw new Exceptions.InvalidPlayerAccessException();
+            if (!IsAccessible(unit_storage)) throw new InvalidPlayerAccessException();
             return true;
         }
 

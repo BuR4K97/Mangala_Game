@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mangala_Game.Exceptions.GameExceptions;
 
 namespace Mangala_Game.Models
 {
@@ -26,7 +27,7 @@ namespace Mangala_Game.Models
 
         public UnitGround GetUnitGround(int index)
         {
-            if (index < 0 || index > UNIT_GROUND_NUMBER - 1) throw new Exceptions.InvalidUnitGroundIndexException();
+            if (index < 0 || index > UNIT_GROUND_NUMBER - 1) throw new InvalidUnitGroundIndexException();
             return unit_grounds[index];
         }
 

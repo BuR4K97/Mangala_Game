@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mangala_Game.Exceptions.GameExceptions;
 
 namespace Mangala_Game.Models
 {
@@ -32,13 +33,13 @@ namespace Mangala_Game.Models
 
         public UnitStorage GetUnitStorage(int index)
         {
-            if (index < 0 || index > UNITSTORAGE_NUMBER - 1) throw new Exceptions.InvalidUnitStorageIndexException();
+            if (index < 0 || index > UNITSTORAGE_NUMBER - 1) throw new InvalidUnitStorageIndexException();
             return unit_storages[index];
         }
 
         public PartialGameGround GetPartialGameGround(int index)
         {
-            if (index < 0 || index > PARTIAL_GAMEGROUND_NUMBER - 1) throw new Exceptions.InvalidPartialGameGroundIndexException();
+            if (index < 0 || index > PARTIAL_GAMEGROUND_NUMBER - 1) throw new InvalidPartialGameGroundIndexException();
             return partial_game_grounds[index];
         }
 

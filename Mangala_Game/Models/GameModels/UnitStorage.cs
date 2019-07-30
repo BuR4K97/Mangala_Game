@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mangala_Game.Exceptions.GameExceptions;
 
 namespace Mangala_Game.Models
 {
@@ -17,7 +18,7 @@ namespace Mangala_Game.Models
 
         public bool InsertUnit(Unit insert_unit)
         {
-            if (insert_unit.GetState() == UnitState.DISABLED) throw new Exceptions.InvalidUnitInsertionException();
+            if (insert_unit.GetState() == UnitState.DISABLED) throw new InvalidUnitInsertionException();
             
             units.Add(insert_unit);
             insert_unit.SetState(UnitState.DISABLED);
@@ -26,8 +27,8 @@ namespace Mangala_Game.Models
 
         public bool InsertUnitList(List<Unit> insert_unit_list)
         {
-            if (insert_unit_list.Exists(unit => unit.GetState() == UnitState.DISABLED)) throw new Exceptions.InvalidUnitInsertionException();
-            if (insert_unit_list.Count == 0) throw new Exceptions.InvalidUnitListInsertionException();
+            if (insert_unit_list.Exists(unit => unit.GetState() == UnitState.DISABLED)) throw new InvalidUnitInsertionException();
+            if (insert_unit_list.Count == 0) throw new InvalidUnitListInsertionException();
 
             foreach (Unit insert_unit in insert_unit_list)
             {

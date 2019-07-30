@@ -17,15 +17,9 @@ namespace Mangala_Game.Models
             this.state = UnitState.ENABLED;
         }
 
-        public UnitState GetState()
-        {
-            return this.state;
-        }
+        public UnitState GetState() { return this.state; }
 
-        public void SetState(UnitState state)
-        {
-            this.state = state;
-        }
+        public void SetState(UnitState state) { this.state = state; }
 
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mangala_Game.Exceptions.GameExceptions;
 
 namespace Mangala_Game.Models
 {
@@ -23,7 +24,7 @@ namespace Mangala_Game.Models
 
         public bool InsertUnit(Unit insert_unit)
         {
-            if (insert_unit.GetState() == UnitState.DISABLED) throw new Exceptions.InvalidUnitInsertionException();
+            if (insert_unit.GetState() == UnitState.DISABLED) throw new InvalidUnitInsertionException();
 
             units.Add(insert_unit);
             return true;
@@ -31,7 +32,7 @@ namespace Mangala_Game.Models
 
         public List<Unit> ExtractUnits()
         {
-            if (units.Count == 0) throw new Exceptions.InvalidUnitGroundExtractionException();
+            if (units.Count == 0) throw new InvalidUnitGroundExtractionException();
 
             List<Unit> extract_units = units;
             units = new List<Unit>();

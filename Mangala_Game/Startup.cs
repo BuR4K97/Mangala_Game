@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Mangala_Game.Configurations.ServerConfigurations;
+using Mangala_Game.Services;
 
 namespace Mangala_Game
 {
@@ -24,7 +26,15 @@ namespace Mangala_Game
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(ServerConfiguration.IDLE_TIMEOUT);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSingleton<ISessionRegisterService, SessionRegisterService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,7 +44,8 @@ namespace Mangala_Game
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseHttpsRedirection();
+            app.UseSession();
             app.UseMvc();
         }
     }
