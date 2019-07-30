@@ -35,6 +35,7 @@ namespace Mangala_Game
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<ISessionRegisterService, SessionRegisterService>();
+            services.AddSingleton<IGameRegisterService, GameRegisterService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

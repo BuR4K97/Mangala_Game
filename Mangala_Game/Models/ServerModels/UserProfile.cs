@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Mangala_Game.Models.ServerModels
 {
-    public class UserProfile : IEquatable<UserProfile>
+    public class UserProfile : ResponseData, IEquatable<UserProfile>
     {
 
         private int user_id;
