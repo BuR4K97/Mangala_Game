@@ -37,6 +37,7 @@ namespace Mangala_Game.Controllers.ServerControllers
             }
             catch(UnregisteredUserSessionException exception_1)
             {
+                session_register_service.AssignUserId(user_profile);
                 HttpContext.Session.SetString(USERID_KEY, user_profile.GetUserId().ToString());
                 HttpContext.Session.SetString(USERNAME_KEY, user_profile.GetUserName());
                 response_package.response_data = user_profile;
@@ -59,7 +60,10 @@ namespace Mangala_Game.Controllers.ServerControllers
         {
             string user_id = HttpContext.Session.GetString(USERID_KEY);
             string user_name = HttpContext.Session.GetString(USERNAME_KEY);
-            if (!string.IsNullOrEmpty(user_id) && !string.IsNullOrEmpty(user_name))
+            if (!string.IsNullOrEmpty(user_id) && !string.IsNullOrEmpty(user_name)) 
+            {
+                
+            }
                 return new UserProfile(Convert.ToInt32(user_id), user_name);
             throw new UnregisteredUserSessionException();
         }

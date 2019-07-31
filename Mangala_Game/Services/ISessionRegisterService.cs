@@ -11,6 +11,7 @@ namespace Mangala_Game.Services
 
         bool RegisterUserSession(UserSession user_session);
         bool GetAccessStatus(UserSession user_session);
+        bool AssignUserId(UserProfile user_profile);
 
     }
 }

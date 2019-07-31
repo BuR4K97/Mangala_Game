@@ -17,6 +17,8 @@ namespace Mangala_Game.Models.ServerModels
             this.user_name = user_name;
         }
 
+        public void SetUserId(int user_id) { this.user_id = user_id; }
+
         public int GetUserId() { return this.user_id; }
 
         public string GetUserName() { return this.user_name; }

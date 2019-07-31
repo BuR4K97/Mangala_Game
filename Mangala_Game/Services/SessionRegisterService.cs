@@ -38,5 +38,19 @@ namespace Mangala_Game.Services
             return false;
         }
 
+        public bool AssignUserId(UserProfile user_profile) 
+        {
+            UserSession active_session;
+            if(user_sessions.TryGetValue(user_profile, out active_session)) 
+                user_profile.SetUserId(active_session.GetUserProfile().GetUserId());
+            else 
+            {
+                int curr_id = 0;
+                while(user_sessions.ContainsKey(key => key.GetUserId() == curr_id)) curr_id++;
+                user_profile.SetUserId(curr_id);
+            }
+            return true;
+        }
+
     }
 }
